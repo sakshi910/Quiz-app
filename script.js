@@ -44,7 +44,10 @@ const option1= document.querySelector("#option1");
 const option2= document.querySelector("#option2");
 const option3= document.querySelector("#option3");
 const option4= document.querySelector("#option4");
-
+const ans1=document.querySelector("#ans1");
+const ans2=document.querySelector("#ans2");
+const ans3=document.querySelector("#ans3");
+const ans4=document.querySelector("#ans4");
 const submit= document.querySelector("#submit");
 const answers = document.querySelectorAll(".answer");
 const showScore = document.querySelector("#showScore");
@@ -65,33 +68,61 @@ const loadQuestion=()=>{
 
 loadQuestion();
 const deselectAll=()=>{
-
+    submit.style.backgroundColor =" #74b9ff";
     answers.forEach((currAnsElem)=>
     currAnsElem.checked=false);
 }
+let find=false;
+
 const getCheckAnswer=()=>{
     let currAnsElem=0;
     let answer;
+    
     answers.forEach((currAnsElem)=>{
     if(currAnsElem.checked)
-    answer=currAnsElem.id;
+    {answer=currAnsElem.id;
+    find=true;
+    }
     });
 return answer;
 }
 
+ans1.addEventListener('click', ()=>{
+    console.log("hii");
+    submit.style.backgroundColor =" #0984e3";
+});
+ans2.addEventListener('click', ()=>{
+    console.log("hii");
+    submit.style.backgroundColor =" #0984e3";
+});
+ans3.addEventListener('click', ()=>{
+    console.log("hii");
+    submit.style.backgroundColor =" #0984e3";
+});
+ans4.addEventListener('click', ()=>{
+    console.log("hii");
+    submit.style.backgroundColor =" #0984e3";
+});
+
 submit.addEventListener('click',()=>{
     const n=quizDB.length;
+    find=false;
     const checkedAnswer= getCheckAnswer();
+    console.log(find);
     console.log(checkedAnswer);
     if(checkedAnswer===quizDB[questionCount].ans)
  {   score++;
-}
+} 
+ 
+  if(find==true){
+   
+
     questionCount++;
 
     deselectAll();
     if(questionCount<n)
     {
-     
+       
      loadQuestion();
     }
 
@@ -104,4 +135,5 @@ submit.addEventListener('click',()=>{
         showScore.classList.remove('scoreArea');
 
     }
+}
 });
